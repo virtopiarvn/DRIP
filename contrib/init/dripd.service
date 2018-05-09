@@ -1,0 +1,26 @@
+[Unit]
+Description=DRIP's distributed currency daemon
+After=network.target
+
+[Service]
+User=drip
+Group=drip
+
+Type=forking
+PIDFile=/var/lib/dripd/dripd.pid
+
+ExecStart=/usr/bin/dripd -daemon -pid=/var/lib/dripd/dripd.pid \
+          -conf=/etc/drip/drip.conf -datadir=/var/lib/dripd
+
+ExecStop=-/usr/bin/drip-cli -conf=/etc/drip/drip.conf \
+         -datadir=/var/lib/dripd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

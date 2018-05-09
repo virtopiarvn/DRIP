@@ -1,0 +1,26 @@
+# /etc/conf.d/dripd: config file for /etc/init.d/dripd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/drip/drip.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/dripd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/dripd.pid"
+
+# Where to write dripd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/dripd"
+
+# User and group to own dripd process
+#BITCOIND_USER="drip"
+#BITCOIND_GROUP="drip"
+
+# Path to dripd executable
+#BITCOIND_BIN="/usr/bin/dripd"
+
+# Nice value to run dripd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

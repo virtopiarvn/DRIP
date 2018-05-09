@@ -1,0 +1,35 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/drip_bg.qm</file>
+        <file alias="ca">locale/drip_ca.qm</file>
+        <file alias="cs">locale/drip_cs.qm</file>
+        <file alias="da">locale/drip_da.qm</file>
+        <file alias="de">locale/drip_de.qm</file>
+        <file alias="en">locale/drip_en.qm</file>
+        <file alias="en_US">locale/drip_en_US.qm</file>
+        <file alias="es">locale/drip_es.qm</file>
+        <file alias="es_ES">locale/drip_es_ES.qm</file>
+        <file alias="fi">locale/drip_fi.qm</file>
+        <file alias="fr_FR">locale/drip_fr_FR.qm</file>
+        <file alias="hi_IN">locale/drip_hi_IN.qm</file>
+        <file alias="hr">locale/drip_hr.qm</file>
+        <file alias="hr_HR">locale/drip_hr_HR.qm</file>
+        <file alias="it">locale/drip_it.qm</file>
+        <file alias="ja">locale/drip_ja.qm</file>
+        <file alias="ko_KR">locale/drip_ko_KR.qm</file>
+        <file alias="lt_LT">locale/drip_lt_LT.qm</file>
+        <file alias="nl">locale/drip_nl.qm</file>
+        <file alias="pl">locale/drip_pl.qm</file>
+        <file alias="pt">locale/drip_pt.qm</file>
+        <file alias="pt_BR">locale/drip_pt_BR.qm</file>
+        <file alias="ro_RO">locale/drip_ro_RO.qm</file>
+        <file alias="ru">locale/drip_ru.qm</file>
+        <file alias="sk">locale/drip_sk.qm</file>
+        <file alias="sv">locale/drip_sv.qm</file>
+        <file alias="tr">locale/drip_tr.qm</file>
+        <file alias="uk">locale/drip_uk.qm</file>
+        <file alias="vi">locale/drip_vi.qm</file>
+        <file alias="zh_CN">locale/drip_zh_CN.qm</file>
+        <file alias="zh_TW">locale/drip_zh_TW.qm</file>
+    </qresource>
+</RCC>
