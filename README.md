@@ -1,4 +1,4 @@
-PIVX Core integration/staging repository
+DRIP Core integration/staging repository
 =====================================
 
 [![Build Status](https://travis-ci.org/DRIP-Project/DRIP.svg?branch=master)](https://travis-ci.org/DRIP-Project/DRIP) [![GitHub 
