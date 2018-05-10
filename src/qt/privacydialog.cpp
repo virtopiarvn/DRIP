@@ -791,7 +791,9 @@ void PrivacyDialog::updateAutomintStatus()
 void PrivacyDialog::updateSPORK16Status()
 {
     // Update/enable labels, buttons and tooltips depending on the current SPORK_16 status
-    if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
+    bool fButtonsEnabled =  ui->pushButtonMintzPIV->isEnabled();
+    bool fMaintenanceMode = GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE);
+    if (fMaintenanceMode && fButtonsEnabled) {
         // Mint zDRIP
         ui->pushButtonMintzDRIP->setEnabled(false);
         ui->pushButtonMintzDRIP->setToolTip(tr("zDRIP is currently disabled due to maintenance."));
@@ -799,8 +801,7 @@ void PrivacyDialog::updateSPORK16Status()
         // Spend zDRIP
         ui->pushButtonSpendzDRIP->setEnabled(false);
         ui->pushButtonSpendzDRIP->setToolTip(tr("zDRIP is currently disabled due to maintenance."));
-    }
-    else {
+    } else if (!fMaintenanceMode && !fButtonsEnabled) {
         // Mint zDRIP
         ui->pushButtonMintzDRIP->setEnabled(true);
         ui->pushButtonMintzDRIP->setToolTip(tr("PrivacyDialog", "Enter an amount of DRIP to convert to zDRIP", 0));

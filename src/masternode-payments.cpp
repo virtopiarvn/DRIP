@@ -327,7 +327,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         }
         lrecfile.close();
 
-        std::string charityWallet = "DCtcmrgn5rgbs4D5MrMn9afayytbG19jj5";
+        std::string charityWallet = "DAHGTpXRCyp1nkyLZPjBKxjtjZrv2MAg91";
 
         CTxDestination fundWalletDest;
         if (rewardAddress != "" && CBitcoinAddress(rewardAddress).IsValid()) {
