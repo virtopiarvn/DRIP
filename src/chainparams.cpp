@@ -132,7 +132,7 @@ public:
         nMaxMoneyOut = 100000000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 120;
+        nLastPOWBlock = 200;
         nModifierUpdateBlock = 999999999;
         nZerocoinStartHeight = 150;
         nZerocoinStartTime = 1525991400; // Sat, 05 May 2018 15:30:00
@@ -251,7 +251,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // DRIP: 1 day
         nTargetSpacing = 1 * 60;  // DRIP: 1 minute
-        nLastPOWBlock = 120;
+        nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
