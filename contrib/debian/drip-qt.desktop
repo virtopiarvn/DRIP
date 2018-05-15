@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DRIP
+Comment=DRIP P2P Cryptocurrency
+Comment[fr]=DRIP, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=DRIP, eşten eşe kriptografik sanal para birimi
+Exec=drip-qt %u
+Terminal=false
+Type=Application
+Icon=drip128
+MimeType=x-scheme-handler/drip;
+Categories=Office;Finance;
