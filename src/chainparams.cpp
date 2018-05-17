@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Satoshi Nakamoto
+// Copyright (c) 2010 Satoshi Nakamoton
 
 // Copyright (c) 2009-2014 The Bitcoin developers
 
@@ -107,18 +107,18 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
 
     boost::assign::map_list_of
 
-    (0, uint256("0x002f9e1d4d9a57718d4d1f61f5e410f3aca37db7981d8fc22b505698afa3c4a3"))
+    (0, uint256("0x00335f26e1075f9b551bbd79a448237d98b5712015637567a966d0aa97164773"));
 
-    (53, uint256("0x00032155217852bd2f6d13f26ca5fcb883a22f7999f97691e3480b6d91047ce3"));
+//    (53, uint256("0x00032155217852bd2f6d13f26ca5fcb883a22f7999f97691e3480b6d91047ce3"));
 
 
 static const Checkpoints::CCheckpointData data = {
 
     &mapCheckpoints,
 
-    1526453026, // * UNIX timestamp of last checkpoint block
+    1526511200, // * UNIX timestamp of last checkpoint block
 
-    55,          // * total number of transactions between genesis and last checkpoint
+    0,          // * total number of transactions between genesis and last checkpoint
 
                 //    (the tx=... number in the SetBestChain debug.log lines)
 
@@ -130,13 +130,13 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
 
-    boost::assign::map_list_of(0, uint256("0x0037650d3c967eb3ddde34f395b32b2ee8369c266640deccee46f3fcf2ed460f"));
+    boost::assign::map_list_of(0, uint256("0x000a9cd524c5d984165a05ac14bc6d6899380dbf39bf5def75df6d4daf8b0511"));
 
 static const Checkpoints::CCheckpointData dataTestnet = {
 
     &mapCheckpointsTestnet,
 
-    1526450600,
+    1526511400,
 
     0,
 
@@ -148,13 +148,13 @@ static const Checkpoints::CCheckpointData dataTestnet = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
 
-    boost::assign::map_list_of(0, uint256("0x797376bd3fa94a86fa2ac5dffc221d3dd3bcbbabac84af10b36dc7293d532a9e"));
+    boost::assign::map_list_of(0, uint256("0x459439a5882d4ac338877907b79cce3d1e077bbe20f1d004eee4e44fc053135d"));
 
 static const Checkpoints::CCheckpointData dataRegtest = {
 
     &mapCheckpointsRegtest,
 
-    1526450800,
+    1526511800,
 
     0,
 
@@ -270,7 +270,7 @@ public:
 
         nZerocoinStartHeight = 150;
 
-        nZerocoinStartTime = 1526459400; // Sat, 05 May 2018 15:30:00
+        nZerocoinStartTime = 1526520200; // Sat, 05 May 2018 15:30:00
 
         nBlockEnforceSerialRange = 153; //Enforce serial range starting this block
 
@@ -312,7 +312,7 @@ public:
 
          */
 
-        const char* pszTimestamp = "Facebook data breach firm ceasing all operations";
+        const char* pszTimestamp = "Trump: Well see if North Korea summit still on";
 
         CMutableTransaction txNew;
 
@@ -334,21 +334,20 @@ public:
 
         genesis.nVersion = 1;
 
-	genesis.nTime = 1526450400;
+	genesis.nTime = 1526511200;
 
 	genesis.nBits = bnProofOfWorkLimit.GetCompact();
 
-	genesis.nNonce = 1559;
-
+	genesis.nNonce = 1309;
 
 
         hashGenesisBlock = genesis.GetHash();
 
 
 
-	assert(hashGenesisBlock == uint256("0x002f9e1d4d9a57718d4d1f61f5e410f3aca37db7981d8fc22b505698afa3c4a3"));
+	assert(hashGenesisBlock == uint256("0x00335f26e1075f9b551bbd79a448237d98b5712015637567a966d0aa97164773"));
 
-	assert(genesis.hashMerkleRoot == uint256("0xd1469b70828f29a190d94881186ab2fe3f4afdf511b1a40a4b0325c93134b9d7"));
+	assert(genesis.hashMerkleRoot == uint256("0xe21dd14249a975413f17a9629850b35527d4130c7e5507caa20002ee06ce9f53"));
 
 
 
@@ -538,17 +537,15 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
 
-        genesis.nTime = 1526450600;
+        genesis.nTime = 1526511400;
 
-        genesis.nNonce = 1355;
+        genesis.nNonce = 3122;
 
 
 
         hashGenesisBlock = genesis.GetHash();
 
-
-
-        assert(hashGenesisBlock == uint256("0x0037650d3c967eb3ddde34f395b32b2ee8369c266640deccee46f3fcf2ed460f"));
+        assert(hashGenesisBlock == uint256("0x000a9cd524c5d984165a05ac14bc6d6899380dbf39bf5def75df6d4daf8b0511"));
 
 
 
@@ -676,21 +673,18 @@ public:
 
         bnProofOfWorkLimit = ~uint256(0) >> 1;
 
-        genesis.nTime = 1526450800;
+        genesis.nTime = 1526511800;
 
         genesis.nBits = 0x207fffff;
 
         genesis.nNonce = 0;
 
 
-
         hashGenesisBlock = genesis.GetHash();
-
-
 
         nDefaultPort = 21465;
 
-        assert(hashGenesisBlock == uint256("0x797376bd3fa94a86fa2ac5dffc221d3dd3bcbbabac84af10b36dc7293d532a9e"));
+        assert(hashGenesisBlock == uint256("0x459439a5882d4ac338877907b79cce3d1e077bbe20f1d004eee4e44fc053135d"));
 
 
 

@@ -47,6 +47,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
         fZSpendFromMe = wallet->IsMyZerocoinSpend(zcspend.getCoinSerialNumber());
     }
 
+    int nIndexMN = wtx.vout.size() - 2;
+
     if (wtx.IsCoinStake()) {
         TransactionRecord sub(hash, nTime);
         CTxDestination address;
@@ -70,12 +72,12 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
             sub.type = TransactionRecord::StakeMint;
             sub.address = CBitcoinAddress(address).ToString();
             sub.credit = nNet;
-        } else if (isminetype mine = wallet->IsMine(wtx.vout[wtx.vout.size() - 2])) {
+        } else if (isminetype mine = wallet->IsMine(wtx.vout[2])) {
             //Masternode reward
             CTxDestination destMN;
-            int nIndexMN = wtx.vout.size() - 2;
+            //int nIndexMN = wtx.vout.size() - 2;
             if (ExtractDestination(wtx.vout[nIndexMN].scriptPubKey, destMN) && IsMine(*wallet, destMN)) {
-                isminetype mine = wallet->IsMine(wtx.vout[nIndexMN]);
+//                isminetype mine = wallet->IsMine(wtx.vout[nIndexMN]);
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 sub.type = TransactionRecord::MNReward;
                 sub.address = CBitcoinAddress(destMN).ToString();
