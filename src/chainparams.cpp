@@ -107,18 +107,18 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
 
     boost::assign::map_list_of
 
-    (0, uint256("0x00335f26e1075f9b551bbd79a448237d98b5712015637567a966d0aa97164773"));
+    (0, uint256("0x00335f26e1075f9b551bbd79a448237d98b5712015637567a966d0aa97164773"))
 
-//    (53, uint256("0x00032155217852bd2f6d13f26ca5fcb883a22f7999f97691e3480b6d91047ce3"));
+    (594, uint256("0x0e3ec1334720ab5b0c0dfb44a5c2ae2105f0c044ac58f6ca67041d26b4900775"));
 
 
 static const Checkpoints::CCheckpointData data = {
 
     &mapCheckpoints,
 
-    1526511200, // * UNIX timestamp of last checkpoint block
+    1526550051, // * UNIX timestamp of last checkpoint block
 
-    0,          // * total number of transactions between genesis and last checkpoint
+    992,          // * total number of transactions between genesis and last checkpoint
 
                 //    (the tx=... number in the SetBestChain debug.log lines)
 
@@ -387,7 +387,7 @@ public:
 
         fMineBlocksOnDemand = false;
 
-        fSkipProofOfWorkCheck = true;
+        fSkipProofOfWorkCheck = false;
 
         fTestnetToBeDeprecatedFieldRPC = false;
 
