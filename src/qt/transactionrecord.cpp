@@ -72,7 +72,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
             sub.type = TransactionRecord::StakeMint;
             sub.address = CBitcoinAddress(address).ToString();
             sub.credit = nNet;
-        } else if (isminetype mine = wallet->IsMine(wtx.vout[2])) {
+        } else if (isminetype mine = wallet->IsMine(nIndexMN)) {
             //Masternode reward
             CTxDestination destMN;
             //int nIndexMN = wtx.vout.size() - 2;
