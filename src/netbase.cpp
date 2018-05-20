@@ -878,15 +878,13 @@ std::string CNetAddr::ToStringIP() const
 {
     if (IsTor())
         return EncodeBase32(&ip[6], 10) + ".onion";
-    if (fUseGetnameinfo)
-    {
-+    CService serv(*this, 0);
-+    struct sockaddr_storage sockaddr;
-+    socklen_t socklen = sizeof(sockaddr);
-+    if (serv.GetSockAddr((struct sockaddr*)&sockaddr, &socklen)) {
-+        char name[1025] = "";
-+        if (!getnameinfo((const struct sockaddr*)&sockaddr, socklen, name, sizeof(name), NULL, 0, NI_NUMERICHOST))
-+            return std::string(name);
+    CService serv(*this, 0);
+    struct sockaddr_storage sockaddr;
+    socklen_t socklen = sizeof(sockaddr);
+    if (serv.GetSockAddr((struct sockaddr*)&sockaddr, &socklen)) {
+        char name[1025] = "";
+        if (!getnameinfo((const struct sockaddr*)&sockaddr, socklen, name, sizeof(name), NULL, 0, NI_NUMERICHOST))
+            return std::string(name);
     }
     if (IsIPv4())
         return strprintf("%u.%u.%u.%u", GetByte(3), GetByte(2), GetByte(1), GetByte(0));
