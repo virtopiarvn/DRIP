@@ -16,6 +16,7 @@
 #include <accumulators.h>
 #include "wallet.h"
 #include "zdripwallet.h"
+#include "zdripchain.h"
 
 using namespace libzerocoin;
 

@@ -1,5 +1,5 @@
 ---
-name: "drip-osx-1.0"
+name: "drip-osx-1.0.2.3"
 enable_cache: true
 suites:
 - "trusty"

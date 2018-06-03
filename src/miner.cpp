@@ -27,6 +27,7 @@
 #include "blocksignature.h"
 #include "spork.h"
 #include "invalid.h"
+#include "zdripchain.h"
 
 
 #include <boost/thread.hpp>
