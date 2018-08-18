@@ -211,9 +211,12 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     // DRIP Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
     CAmount dripAvailableBalance = balance - immatureBalance - nLockedBalance;
-    CAmount nTotalWatchBalance = watchOnlyBalance + watchUnconfBalance + watchImmatureBalance;    
-    CAmount nUnlockedBalance = nTotalBalance - nLockedBalance - nLockedBalance; // increment nLockedBalance twice because it was added to
-                                                                                // nTotalBalance above
+    CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
+
+    // DRIP Watch-Only Balance
+    CAmount nTotalWatchBalance = watchOnlyBalance + watchUnconfBalance;
+    CAmount nAvailableWatchBalance = watchOnlyBalance - watchImmatureBalance - nWatchOnlyLockedBalance;
+
     // zDRIP Balance
     CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
     // Percentages
@@ -232,7 +235,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
 
     // Watchonly labels
-    ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nAvailableWatchBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchLocked->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nWatchOnlyLockedBalance, false, BitcoinUnits::separatorAlways));
@@ -270,27 +273,35 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showSumAvailable = settingShowAllBalances || sumTotalBalance != availableTotalBalance;
     ui->labelBalanceTextz->setVisible(showSumAvailable);
     ui->labelBalancez->setVisible(showSumAvailable);
-    bool showDRIPAvailable = settingShowAllBalances || dripAvailableBalance != nTotalBalance;
-    bool showWatchOnlyDRIPAvailable = watchOnlyBalance != nTotalWatchBalance;
-    bool showDRIPPending = settingShowAllBalances || unconfirmedBalance != 0;
-    bool showWatchOnlyDRIPPending = watchUnconfBalance != 0;
-    bool showDRIPLocked = settingShowAllBalances || nLockedBalance != 0;
-    bool showWatchOnlyDRIPLocked = nWatchOnlyLockedBalance != 0;
-    bool showImmature = settingShowAllBalances || immatureBalance != 0;
-    bool showWatchOnlyImmature = watchImmatureBalance != 0;
+
     bool showWatchOnly = nTotalWatchBalance != 0;
-    ui->labelBalance->setVisible(showDRIPAvailable || showWatchOnlyDRIPAvailable);
+
+    // DRIP Available
+    bool showDRIPAvailable = settingShowAllBalances || dripAvailableBalance != nTotalBalance;
+    bool showWatchOnlyDRIPAvailable = showDRIPAvailable || nAvailableWatchBalance != nTotalWatchBalance;
     ui->labelBalanceText->setVisible(showDRIPAvailable || showWatchOnlyDRIPAvailable);
-    ui->labelWatchAvailable->setVisible(showDRIPAvailable && showWatchOnly);
-    ui->labelUnconfirmed->setVisible(showDRIPPending || showWatchOnlyDRIPPending);
+    ui->labelBalance->setVisible(showDRIPAvailable || showWatchOnlyDRIPAvailable);
+    ui->labelWatchAvailable->setVisible(showWatchOnlyDRIPAvailable && showWatchOnly);
+     // DRIP Pending
+    bool showDRIPPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlyDRIPPending = showDRIPPending || watchUnconfBalance != 0;
     ui->labelPendingText->setVisible(showDRIPPending || showWatchOnlyDRIPPending);
-    ui->labelWatchPending->setVisible(showDRIPPending && showWatchOnly);
-    ui->labelLockedBalance->setVisible(showDRIPLocked || showWatchOnlyDRIPLocked);
+    ui->labelUnconfirmed->setVisible(showDRIPPending || showWatchOnlyDRIPPending);
+    ui->labelWatchPending->setVisible(showWatchOnlyDRIPPending && showWatchOnly);
+     // DRIP Immature
+    bool showDRIPImmature = settingShowAllBalances || immatureBalance != 0;
+    bool showWatchOnlyImmature = showDRIPImmature || watchImmatureBalance != 0;
+    ui->labelImmatureText->setVisible(showDRIPImmature || showWatchOnlyImmature);
+    ui->labelImmature->setVisible(showDRIPImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
+    ui->labelWatchImmature->setVisible(showWatchOnlyImmature && showWatchOnly); // show watch-only immature balance
+     // DRIP Locked
+    bool showDRIPLocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlyDRIPLocked = showDRIPLocked || nWatchOnlyLockedBalance != 0;
     ui->labelLockedBalanceText->setVisible(showDRIPLocked || showWatchOnlyDRIPLocked);
-    ui->labelWatchLocked->setVisible(showDRIPLocked && showWatchOnly);
-    ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
-    ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
-    ui->labelWatchImmature->setVisible(showImmature && showWatchOnly); // show watch-only immature balance
+    ui->labelLockedBalance->setVisible(showDRIPLocked || showWatchOnlyDRIPLocked);
+    ui->labelWatchLocked->setVisible(showWatchOnlyDRIPLocked && showWatchOnly);
+
+     // zDRIP
     bool showzDRIPAvailable = settingShowAllBalances || zerocoinBalance != matureZerocoinBalance;
     bool showzDRIPUnconfirmed = settingShowAllBalances || unconfirmedZerocoinBalance != 0;
     bool showzDRIPImmature = settingShowAllBalances || immatureZerocoinBalance != 0;
@@ -300,6 +311,8 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelzBalanceUnconfirmedText->setVisible(showzDRIPUnconfirmed);
     ui->labelzBalanceImmature->setVisible(showzDRIPImmature);
     ui->labelzBalanceImmatureText->setVisible(showzDRIPImmature);
+
+    // Percent split
     bool showPercentages = ! (zerocoinBalance == 0 && nTotalBalance == 0);
     ui->labelDRIPPercent->setVisible(showPercentages);
     ui->labelzDRIPPercent->setVisible(showPercentages);

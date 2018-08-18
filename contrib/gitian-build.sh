@@ -314,6 +314,7 @@ then
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit drip=${COMMIT} --url drip=${url} ../drip/contrib/gitian-descriptors/gitian-aarch64.yml
 	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../drip/contrib/gitian-descriptors/gitian-aarch64.yml
 	    mv build/out/drip-*.tar.gz build/out/src/drip-*.tar.gz ../drip-binaries/${VERSION}
+	fi
 	popd
 
         if [[ $commitFiles = true ]]

@@ -110,17 +110,17 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (0, uint256("0x00335f26e1075f9b551bbd79a448237d98b5712015637567a966d0aa97164773"))
     (594, uint256("0x0e3ec1334720ab5b0c0dfb44a5c2ae2105f0c044ac58f6ca67041d26b4900775"))
     (4795, uint256("0x25cc50f94b83d877f2c37cfda9cc30985dfbdc1078835a0743bf4eefbf3c168b"))
-    (25354, uint256("0x5244e9623ab3a0f189a966ff149f36a10f1a1a1d5342c9a7e28a17b297d872d7"));
-
+    (25354, uint256("0x5244e9623ab3a0f189a966ff149f36a10f1a1a1d5342c9a7e28a17b297d872d7"))
+    (132491, uint256("0x3038d52e3726bd3dd4d3906e529093f8f37559766c2b09ca6d1219a354bf9e1c"));
 
 
 static const Checkpoints::CCheckpointData data = {
 
     &mapCheckpoints,
 
-    1528042588, // * UNIX timestamp of last checkpoint block
+    1534526484, // * UNIX timestamp of last checkpoint block
 
-    51471,      // * total number of transactions between genesis and last checkpoint
+    284760,     // * total number of transactions between genesis and last checkpoint
 
                 //    (the tx=... number in the SetBestChain debug.log lines)
 
@@ -276,11 +276,11 @@ public:
 
         nBlockEnforceSerialRange = 153; //Enforce serial range starting this block
 
-        nBlockRecalculateAccumulators = 999999999; //Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 102552; //Trigger a recalculation of accumulators
 
         nBlockFirstFraudulent = 999999999; //First block that bad serials emerged
 
-        nBlockLastGoodCheckpoint = 999999999; //Last valid accumulator checkpoint
+        nBlockLastGoodCheckpoint = 102551; //Last valid accumulator checkpoint
 
         nBlockEnforceInvalidUTXO = 999999999; //Start enforcing the invalid UTXO's
 
@@ -435,7 +435,7 @@ public:
 
         nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
 
-        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zdrip to be stakable
+        nZerocoinRequiredStakeDepth = 100; //The required confirmations for a zdrip to be stakable
 
 
 

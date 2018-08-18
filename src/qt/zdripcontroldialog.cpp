@@ -16,7 +16,7 @@ std::set<std::string> ZDripControlDialog::setSelectedMints;
 std::set<CMintMeta> ZDripControlDialog::setMints;
 
 ZDripControlDialog::ZDripControlDialog(QWidget *parent) :
-    QDialog(parent),
+    QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
     ui(new Ui::ZDripControlDialog),
     model(0)
 {

@@ -1973,7 +1973,7 @@ https://www.transifex.com/drip-project/drip-project-translations</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
-        <translation>Limite de divisão da estaca:</translation>
+        <translation>División de Stake:</translation>
     </message>
     <message>
         <source>Connect to the DRIP network through a SOCKS5 proxy.</source>
@@ -2076,7 +2076,7 @@ https://www.transifex.com/drip-project/drip-project-translations</translation>
         <translation>Qualquer</translation>
     </message>
     <message>
-        <source>default</source>
+        <source>Default</source>
         <translation>por defecto</translation>
     </message>
     <message>
@@ -2160,7 +2160,7 @@ https://www.transifex.com/drip-project/drip-project-translations</translation>
     </message>
     <message>
         <source>zDRIP Balance</source>
-        <translation>Balanço zDRIP</translation>
+        <translation>Balance zDRIP</translation>
     </message>
     <message>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DRIP network after a connection is established, but this process has not completed yet.</source>
@@ -2168,7 +2168,7 @@ https://www.transifex.com/drip-project/drip-project-translations</translation>
     </message>
     <message>
         <source>OVERVIEW</source>
-        <translation>VISÃO GERAL</translation>
+        <translation>VISIÓN GENERAL</translation>
     </message>
     <message>
         <source>Combined Balance (including unconfirmed and immature coins)</source>
@@ -2427,7 +2427,7 @@ Para habilitar AutoMint cambie 'enablezeromint = 0' a 'enablezeromint = 1' en dr
     </message>
     <message>
         <source>PRIVACY</source>
-        <translation>PRIVACIDADE</translation>
+        <translation>PRIVACIDAD</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2748,7 +2748,7 @@ Para alterar a porcentagem (não é necessário reiniciar):
     </message>
     <message>
         <source> Configured target percentage: &lt;b&gt;</source>
-        <translation>Porcentagem de segmentação configurada:&lt;b&gt;</translation>
+        <translation>Porcentaje de segmentación configurada:&lt;b&gt;</translation>
     </message>
     <message>
         <source>zDRIP is currently disabled due to maintenance.</source>
@@ -2792,7 +2792,7 @@ Para alterar a porcentagem (não é necessário reiniciar):
     </message>
     <message>
         <source>AutoMint Status:</source>
-        <translation>Status AutoMint:</translation>
+        <translation>Estado AutoMint:</translation>
     </message>
     <message>
         <source>Denom. &lt;b&gt;1&lt;/b&gt;:</source>
@@ -2833,6 +2833,10 @@ Para alterar a porcentagem (não é necessário reiniciar):
     <message>
         <source>Message: Enter an amount &gt; 0.</source>
         <translation>Mensaje: Introduzca una cantidad &gt; 0.</translation>
+    </message>
+    <message>
+        <source>Enter an amount of Drip to convert to zDRIP</source>
+        <translation>Introduzca una cantidad de DRIP para convertirlo a zDRIP</translation>
     </message>
     <message>
         <source>Minting </source>
@@ -2907,6 +2911,10 @@ Por favor espere...</translation>
     <message>
         <source>Confirm send coins</source>
         <translation>Confirmar enviar monedas</translation>
+    </message>
+    <message>
+        <source>zDRIP Selected:</source>
+        <translation>Selección de zDRIP:</translation>
     </message>
     <message>
         <source>Spending Zerocoin.
@@ -4490,6 +4498,14 @@ También mint las denominaciones más altas (por lo tanto, se necesitan menos da
         <translation>Minado</translation>
     </message>
     <message>
+        <source>Converted DRIP to zDRIP</source>
+        <translation>Conversión DRIP a zDRIP</translation>
+    </message>
+    <message>
+        <source>Anonymous (zDRIP Transaction)</source>
+        <translation>Anónima (Transacción zDRIP)</translation>
+    </message>
+    <message>
         <source>Obfuscated</source>
         <translation>Ofuscado</translation>
     </message>
@@ -4722,7 +4738,7 @@ También mint las denominaciones más altas (por lo tanto, se necesitan menos da
     <name>WalletView</name>
     <message>
         <source>HISTORY</source>
-        <translation>HISTÓRIA</translation>
+        <translation>HISTORIAL</translation>
     </message>
     <message>
         <source>&amp;Export</source>
