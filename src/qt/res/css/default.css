@@ -1672,6 +1672,32 @@ min-height: 24px;
 min-width: 24px;
 }
 
+/**************************** SPEND BTC PAGE *****************************************/
+/* QDialog#SendCoinsBTCDialog */
+/* QWidget#SendCoinsBTCDialog */
+
+QWidget#SendCoinsBTCDialog .QFrame[frameShape="4"] { /* QFrame::HLine == 0x0004 */
+border:1px solid #265EC4;
+}
+
+QWidget#SendCoinsBTCDialog .QFrame#frame_Content {
+background-color:#f2f0f0;
+}
+
+QWidget#SendCoinsBTCDialog .QFrame#verticalFrameLeft {
+background-color:#ffffff;
+}
+
+QWidget#SendCoinsBTCDialog .QFrame#verticalFrameRight {
+background-color:#ffffff;
+}
+
+QWidget#SendCoinsBTCDialog .QToolButton {
+margin:2px;
+min-height: 24px;
+min-width: 24px;
+}
+
 /**************************** MASTERNODE LIST *******************************************/
 QWidget#MasternodeList .QFrame#frameList {
 background-color:#ffffff;

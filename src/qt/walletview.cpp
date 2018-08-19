@@ -19,6 +19,7 @@
 #include "receivecoinsdialog.h"
 #include "privacydialog.h"
 #include "sendcoinsdialog.h"
+#include "sendcoinsbtcdialog.h"
 #include "signverifymessagedialog.h"
 #include "transactiontablemodel.h"
 #include "transactionview.h"
@@ -118,12 +119,14 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     privacyPage = new PrivacyDialog();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
+    sendCoinsBTCPage = new SendCoinsBTCDialog();
 
     addWidget(overviewPage);
     addWidget(transactionsPage);
     addWidget(privacyPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
+    addWidget(sendCoinsBTCPage);
     addWidget(explorerWindow);
 
     QSettings settings;
@@ -178,6 +181,7 @@ void WalletView::setClientModel(ClientModel* clientModel)
 
     overviewPage->setClientModel(clientModel);
     sendCoinsPage->setClientModel(clientModel);
+    sendCoinsBTCPage->setClientModel(clientModel);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setClientModel(clientModel);
@@ -198,6 +202,7 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
+    sendCoinsBTCPage->setModel(walletModel);
 
     if (walletModel) {
         // Receive and pass through messages from wallet model
@@ -281,6 +286,14 @@ void WalletView::gotoSendCoinsPage(QString addr)
 
     if (!addr.isEmpty())
         sendCoinsPage->setAddress(addr);
+}
+
+void WalletView::gotoSendCoinsBTCPage(QString addr)
+{
+    setCurrentWidget(sendCoinsBTCPage);
+
+    if (!addr.isEmpty())
+        sendCoinsBTCPage->setAddress(addr);
 }
 
 void WalletView::gotoSignMessageTab(QString addr)

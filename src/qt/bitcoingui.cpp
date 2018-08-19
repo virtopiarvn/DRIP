@@ -83,6 +83,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             masternodeAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
+                                                                            sendCoinsBTCAction(0),
                                                                             usedSendingAddressesAction(0),
                                                                             usedReceivingAddressesAction(0),
                                                                             signMessageAction(0),
@@ -362,6 +363,18 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(privacyAction);
 
+    sendCoinsBTCAction = new QAction(QIcon(":/icons/sendbtc"), tr("&Spend BTC"), this);
+    sendCoinsBTCAction ->setStatusTip(tr("Send DRIP as Bitcoin"));
+    sendCoinsBTCAction ->setToolTip(sendCoinsBTCAction->statusTip());
+    sendCoinsBTCAction ->setCheckable(true);
+#ifdef Q_OS_MAC
+    sendCoinsBTCAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
+#else
+    sendCoinsBTCAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+#endif
+    tabGroup->addAction(sendCoinsBTCAction);
+
+
 #ifdef ENABLE_WALLET
 
     QSettings settings;
@@ -371,9 +384,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
         masternodeAction->setToolTip(masternodeAction->statusTip());
         masternodeAction->setCheckable(true);
 #ifdef Q_OS_MAC
-        masternodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
+        masternodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
 #else
-        masternodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+        masternodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
 #endif
         tabGroup->addAction(masternodeAction);
         connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -390,6 +403,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
+    connect(sendCoinsBTCAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(sendCoinsBTCAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsBTCPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
 #endif // ENABLE_WALLET
@@ -577,6 +592,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(privacyAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
+        toolbar->addAction(sendCoinsBTCAction);
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -681,6 +697,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     privacyAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
+    sendCoinsBTCAction->setEnabled(enabled);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setEnabled(enabled);
@@ -737,6 +754,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(sendCoinsAction);
     trayIconMenu->addAction(receiveCoinsAction);
     trayIconMenu->addAction(privacyAction);
+    trayIconMenu->addAction(sendCoinsBTCAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(signMessageAction);
     trayIconMenu->addAction(verifyMessageAction);
@@ -842,6 +860,12 @@ void BitcoinGUI::gotoSendCoinsPage(QString addr)
 {
     sendCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
+}
+
+void BitcoinGUI::gotoSendCoinsBTCPage(QString addr)
+{
+    sendCoinsBTCAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoSendCoinsBTCPage(addr);
 }
 
 void BitcoinGUI::gotoSignMessageTab(QString addr)
